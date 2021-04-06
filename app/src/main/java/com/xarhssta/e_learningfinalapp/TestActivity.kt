@@ -1,5 +1,8 @@
 package com.xarhssta.e_learningfinalapp
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 
@@ -28,10 +32,13 @@ class TestActivity : AppCompatActivity() {
     private var correctAnswer: Int = 0
     private var correctCount: Int = 0
 
+    lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
         setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         classNumber = intent.getIntExtra("class", 0)
         Toast.makeText(this, classNumber.toString(), Toast.LENGTH_LONG).show()
@@ -44,16 +51,21 @@ class TestActivity : AppCompatActivity() {
         option3Button = findViewById(R.id.option3)
         option4Button = findViewById(R.id.option4)
 
-        newQuestion()
+        sharedPreferences = getSharedPreferences("scores", Context.MODE_PRIVATE)
 
+        newQuestion(classNumber!!)
     }
 
-    private fun newQuestion() {
-        when (classNumber) {
+    private fun newQuestion(number: Int) {
+        when (number) {
             1 -> newAddQuestion()
             2 -> newSubQuestion()
             3 -> newMulQuestion()
             4 -> newDivQuestion()
+            5 -> {
+                val randomNumber = Random.nextInt(1,4)
+                newQuestion(randomNumber)
+            }
         }
     }
 
@@ -99,7 +111,7 @@ class TestActivity : AppCompatActivity() {
 
     private fun newSubQuestion() {
         val numberA: Int
-        val numberB: Int
+        var numberB: Int
         val answers: ArrayList<Int> = ArrayList<Int>()
         var wrongAnswer: Int = 0
         var found: Boolean
@@ -111,7 +123,14 @@ class TestActivity : AppCompatActivity() {
             numberA = Random.nextInt(100)
             numberB = Random.nextInt(100)
         }
-        val dif = if (numberA >= numberB) {
+        while(numberA == numberB) {
+            numberB = if(questionDifficulty == 0) {
+                Random.nextInt(10)
+            } else {
+                Random.nextInt(100)
+            }
+        }
+        val dif = if (numberA > numberB) {
             actionTextView.text = "$numberA - $numberB"
             numberA - numberB
         } else {
@@ -249,12 +268,18 @@ class TestActivity : AppCompatActivity() {
             questionDifficulty = 1
         }
         if (questionsCount == 10) {
-            option1Button.isClickable = false
-            option2Button.isClickable = false
-            option3Button.isClickable = false
-            option4Button.isClickable = false
+            when (classNumber) {
+                1-> sharedPreferences.edit().putString("add","$correctCount/10").apply()
+                2-> sharedPreferences.edit().putString("dif","$correctCount/10").apply()
+                3-> sharedPreferences.edit().putString("mul","$correctCount/10").apply()
+                4-> sharedPreferences.edit().putString("div","$correctCount/10").apply()
+                5-> sharedPreferences.edit().putString("final","$correctCount/10").apply()
+            }
+            val intent = Intent(this, ScoreActivity::class.java)
+            intent.putExtra("correct", correctCount)
+            startActivity(intent)
         } else {
-            newQuestion()
+            newQuestion(classNumber!!)
         }
     }
 
