@@ -10,16 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ELearningFinalApp">
         <activity
+            android:name=".TheoryActivity"
+            android:label="@string/title_activity_theory"
+            android:theme="@style/Theme.ELearningFinalApp.NoActionBar"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".ScoreActivity"
             android:label="@string/title_activity_score"
-            android:theme="@style/Theme.ELearningFinalApp.NoActionBar"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ELearningFinalApp.NoActionBar" />
         <activity
             android:name=".TestActivity"
             android:label="@string/title_activity_test"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.ELearningFinalApp.NoActionBar"
-            android:parentActivityName=".MainActivity"/>
+            android:theme="@style/Theme.ELearningFinalApp.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

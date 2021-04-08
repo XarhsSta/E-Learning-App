@@ -5,6 +5,6 @@
     <item
         android:id="@+id/action_history"
         android:orderInCategory="100"
-        android:title="Ιστορικό"
+        android:title="@string/action_history"
         app:showAsAction="never" />
 </menu>

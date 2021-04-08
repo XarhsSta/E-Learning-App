@@ -13,7 +13,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
-
+        Log.d("MainActivity",".onCreate called")
         theoryButton = findViewById(R.id.theoryButton)
         testButton = findViewById(R.id.testButton)
         finalTestButton = findViewById(R.id.finalTestButton)
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         mulButton = findViewById(R.id.mulButton)
         divButton = findViewById(R.id.divButton)
 
-        sharedPreferences = getSharedPreferences("scores", Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(getString(R.string.sharedPreferencesKey), Context.MODE_PRIVATE)
 
     }
 
@@ -67,6 +66,11 @@ class MainActivity : AppCompatActivity() {
 
         firstTagFlag = view.tag == "1"
 
+        if (firstTagFlag) {
+            finalTestButton.isClickable= false
+            finalTestButton.visibility = View.INVISIBLE
+        }
+
         theoryButton.visibility = View.INVISIBLE
         theoryButton.isClickable = false
 
@@ -88,20 +92,22 @@ class MainActivity : AppCompatActivity() {
 
     fun startClass(view: View) {
         if (firstTagFlag) {
-
-            Toast.makeText(
-                this,
-                "TAG: " + view.tag + ", and boolean is:" + firstTagFlag.toString(),
-                Toast.LENGTH_LONG
-            ).show()
+            val theoryIntent = Intent(this, TheoryActivity::class.java)
+            when (view.tag) {
+                "1" -> theoryIntent.putExtra(getString(R.string.intentKey), 1)
+                "2" -> theoryIntent.putExtra(getString(R.string.intentKey), 2)
+                "3" -> theoryIntent.putExtra(getString(R.string.intentKey), 3)
+                "4" -> theoryIntent.putExtra(getString(R.string.intentKey), 4)
+            }
+            startActivity(theoryIntent)
         } else {
             val testIntent = Intent(this, TestActivity::class.java)
             when (view.tag) {
-                "1" -> testIntent.putExtra("class",1)
-                "2" -> testIntent.putExtra("class",2)
-                "3" -> testIntent.putExtra("class",3)
-                "4" -> testIntent.putExtra("class",4)
-                "5" -> testIntent.putExtra("class",5)
+                "1" -> testIntent.putExtra(getString(R.string.intentKey),1)
+                "2" -> testIntent.putExtra(getString(R.string.intentKey),2)
+                "3" -> testIntent.putExtra(getString(R.string.intentKey),3)
+                "4" -> testIntent.putExtra(getString(R.string.intentKey),4)
+                "5" -> testIntent.putExtra(getString(R.string.intentKey),5)
             }
             startActivity(testIntent)
         }
@@ -116,32 +122,66 @@ class MainActivity : AppCompatActivity() {
         val historyDivScore: TextView = messageView.findViewById(R.id.historyDivScoreTextView)
         val historyFinalScore: TextView = messageView.findViewById(R.id.historyFinalScoreTextView)
 
-        historyAddScore.text = sharedPreferences.getString("add","Δεν υπάρχει βαθμός")
-        historyDifScore.text = sharedPreferences.getString("dif","Δεν υπάρχει βαθμός")
-        historyMulScore.text = sharedPreferences.getString("mul","Δεν υπάρχει βαθμός")
-        historyDivScore.text = sharedPreferences.getString("div","Δεν υπάρχει βαθμός")
-        historyFinalScore.text = sharedPreferences.getString("final","Δεν υπάρχει βαθμός")
+        historyAddScore.text = sharedPreferences.getString(getString(R.string.addKey),getString(R.string.noGrade))
+        historyDifScore.text = sharedPreferences.getString(getString(R.string.difKey),getString(R.string.noGrade))
+        historyMulScore.text = sharedPreferences.getString(getString(R.string.mulKey),getString(R.string.noGrade))
+        historyDivScore.text = sharedPreferences.getString(getString(R.string.divKey),getString(R.string.noGrade))
+        historyFinalScore.text = sharedPreferences.getString(getString(R.string.finalKey),getString(R.string.noGrade))
 
         val builder = AlertDialog.Builder(this)
-        builder.setPositiveButton("Επαναφορά",
+        builder.setPositiveButton(getString(R.string.reset),
         DialogInterface.OnClickListener(){ dialogInterface: DialogInterface, i: Int ->
 
             sharedPreferences.edit().apply{
-                putString("add","Δεν υπάρχει βαθμός")
-                putString("dif","Δεν υπάρχει βαθμός")
-                putString("mul","Δεν υπάρχει βαθμός")
-                putString("div","Δεν υπάρχει βαθμός")
-                putString("final","Δεν υπάρχει βαθμός")
+                putString(getString(R.string.addKey),getString(R.string.noGrade))
+                putString(getString(R.string.difKey),getString(R.string.noGrade))
+                putString(getString(R.string.mulKey),getString(R.string.noGrade))
+                putString(getString(R.string.divKey),getString(R.string.noGrade))
+                putString(getString(R.string.finalKey),getString(R.string.noGrade))
             }.apply()
 
         }
         )
-        builder.setNegativeButton("Κλείσιμο",
+        builder.setNegativeButton(getString(R.string.close),
            DialogInterface.OnClickListener(){ dialogInterface: DialogInterface, i: Int ->
                 closeContextMenu()
            })
         val aboutDialog: AlertDialog = builder.setView(messageView).create()
         aboutDialog.setCanceledOnTouchOutside(true)
         aboutDialog.show()
+    }
+
+    private fun resetButtons() {
+
+        firstTagFlag = false
+        
+        finalTestButton.isClickable = true
+        finalTestButton.visibility = View.VISIBLE
+
+        theoryButton.visibility = View.VISIBLE
+        theoryButton.isClickable = true
+
+        testButton.visibility = View.VISIBLE
+        testButton.isClickable = true
+
+        addButton.visibility = View.INVISIBLE
+        addButton.isClickable = false
+
+        subButton.visibility = View.INVISIBLE
+        subButton.isClickable = false
+
+        mulButton.visibility = View.INVISIBLE
+        mulButton.isClickable = false
+
+        divButton.visibility = View.INVISIBLE
+        divButton.isClickable = false
+    }
+
+    override fun onBackPressed() {
+        if (!theoryButton.isClickable) {
+            resetButtons()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

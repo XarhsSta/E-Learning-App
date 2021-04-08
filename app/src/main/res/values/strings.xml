@@ -1,14 +1,53 @@
 <resources>
-    <string name="app_name">E-Learning Final App</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="app_name">Ηλεκτρονική Μάθηση</string>
+    <string name="title_activity_test">Τεστ</string>
+    <string name="title_activity_score">Τελικό Αποτέλεσμα</string>
+    <string name="title_activity_theory">Θεωρία</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_test">TestActivity</string>
-    <string name="title_activity_score">ScoreActivity</string>
+    <string name="placeholder">View</string>
+    <string name="error">Invalid</string>
+
+    <!-- Strings used for Shared Preferences-->
+    <string name="sharedPreferencesKey">scores</string>
+    <string name="addKey">add</string>
+    <string name="difKey">dif</string>
+    <string name="mulKey">mul</string>
+    <string name="divKey">div</string>
+    <string name="finalKey">final</string>
+
+    <!-- String used for intents-->
+    <string name="intentKey">class</string>
+    <string name="testIntentKey">correct</string>
+
+    <!-- String used in MainActivity.kt-->
+    <string name="noGrade">Δεν υπάρχει βαθμός</string>
+    <string name="reset">Επαναφορά</string>
+    <string name="close">Κλείσιμο</string>
+
+    <!-- String used in activity_main.xml-->
+    <string name="action_history">Ιστορικό</string>
+    <string name="theoryTitle">Θεωρία</string>
+    <string name="testTitle">Τεστ</string>
+    <string name="addTitle">Πρόσθεση</string>
+    <string name="difTitle">Αφαίρεση</string>
+    <string name="mulTitle">Πολλαπλασιασμός</string>
+    <string name="divTitle">Διαίρεση</string>
+    <string name="finalTitleText">Τελική Εξέταση</string>
+
+    <!-- Strings used in history_layout.xml-->
+    <string name="historyTitleText">Ιστορικό Τελευταίων Αποτελεσμάτων</string>
+
+    <!--String usec in TestActivity.kt-->
+    <string name="addTestTitle">Βρες το σωστό άθροισμα</string>
+    <string name="difTestTitle">Βρες τη σωστή διαφορά</string>
+    <string name="mulTestTitle">Βρες το σωστό γινόμενο</string>
+    <string name="divTestTitle">Βρες το σωστό πηλίκο</string>
+
+    <!-- String used in content_score.xml and ScoreActivity.kt-->
+    <string name="resultTitleTextView">Το Αποτέλεσμά σου είναι:</string>
+    <string name="badResult">Δεν έχεις διαβάσει καθόλου. Διάβασε ξανά τη θεωρία</string>
+    <string name="mediumResult">Έκανες καλή προσπάθεια. Διάβασε άλλη μια φορά τη θεωρία και πιστεύω θα τα καταφέρεις</string>
+    <string name="goodResult">Μπράβο σου. Πολύ καλή προσπάθεια</string>
+
+
 </resources>

@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="Ιστορικό Τελευταίων Αποτελεσμάτων"
+        android:text="@string/historyTitleText"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold|italic"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Πρόσθεση" />
+            android:text="@string/addTitle" />
 
         <TextView
             android:id="@+id/historyAddScoreTextView"
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Αφαίρεση" />
+            android:text="@string/difTitle" />
 
         <TextView
             android:id="@+id/historyDifScoreTextView"
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Πολλαπλασιασμός" />
+            android:text="@string/mulTitle" />
 
         <TextView
             android:id="@+id/historyMulScoreTextView"
@@ -114,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Διαίρεση" />
+            android:text="@string/divTitle" />
 
         <TextView
             android:id="@+id/historyDivScoreTextView"
@@ -141,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Τελική Εξέταση" />
+            android:text="@string/finalTitleText" />
 
         <TextView
             android:id="@+id/historyFinalScoreTextView"

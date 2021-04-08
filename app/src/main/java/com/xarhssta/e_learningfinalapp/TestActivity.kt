@@ -40,7 +40,7 @@ class TestActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        classNumber = intent.getIntExtra("class", 0)
+        classNumber = intent.getIntExtra(getString(R.string.intentKey), 0)
         Toast.makeText(this, classNumber.toString(), Toast.LENGTH_LONG).show()
 
         titleTextView = findViewById(R.id.titleTextView)
@@ -51,7 +51,7 @@ class TestActivity : AppCompatActivity() {
         option3Button = findViewById(R.id.option3)
         option4Button = findViewById(R.id.option4)
 
-        sharedPreferences = getSharedPreferences("scores", Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(getString(R.string.sharedPreferencesKey), Context.MODE_PRIVATE)
 
         newQuestion(classNumber!!)
     }
@@ -75,7 +75,7 @@ class TestActivity : AppCompatActivity() {
         val answers: ArrayList<Int> = ArrayList<Int>()
         var wrongAnswer: Int = 0
         var found: Boolean
-        titleTextView.text = "Βρες το σωστό άθροισμα"
+        titleTextView.text = getString(R.string.addTestTitle)
         if (questionDifficulty == 0) {
             numberA = Random.nextInt(10)
             numberB = Random.nextInt(10)
@@ -115,7 +115,7 @@ class TestActivity : AppCompatActivity() {
         val answers: ArrayList<Int> = ArrayList<Int>()
         var wrongAnswer: Int = 0
         var found: Boolean
-        titleTextView.text = "Βρες τη σωστή διαφορά"
+        titleTextView.text = getString(R.string.difTestTitle)
         if (questionDifficulty == 0) {
             numberA = Random.nextInt(10)
             numberB = Random.nextInt(10)
@@ -167,7 +167,7 @@ class TestActivity : AppCompatActivity() {
         val answers: ArrayList<Int> = ArrayList<Int>()
         var wrongAnswer: Int
         var found: Boolean
-        titleTextView.text = "Βρες το σωστό γινομένο"
+        titleTextView.text = getString(R.string.mulTestTitle)
         if (questionDifficulty == 0) {
             numberA = Random.nextInt(10)
             numberB = Random.nextInt(10)
@@ -208,7 +208,7 @@ class TestActivity : AppCompatActivity() {
         val answers: ArrayList<Int> = ArrayList<Int>()
         var wrongAnswer: Int
         var found: Boolean
-        titleTextView.text = "Βρες το σωστό πηλίκο"
+        titleTextView.text = getString(R.string.divTestTitle)
             if (questionDifficulty == 0) {
                 numberA = Random.nextInt(10)
                 numberB = Random.nextInt(1,10)
@@ -269,14 +269,14 @@ class TestActivity : AppCompatActivity() {
         }
         if (questionsCount == 10) {
             when (classNumber) {
-                1-> sharedPreferences.edit().putString("add","$correctCount/10").apply()
-                2-> sharedPreferences.edit().putString("dif","$correctCount/10").apply()
-                3-> sharedPreferences.edit().putString("mul","$correctCount/10").apply()
-                4-> sharedPreferences.edit().putString("div","$correctCount/10").apply()
-                5-> sharedPreferences.edit().putString("final","$correctCount/10").apply()
+                1-> sharedPreferences.edit().putString(getString(R.string.addKey),"$correctCount/10").apply()
+                2-> sharedPreferences.edit().putString(getString(R.string.difKey),"$correctCount/10").apply()
+                3-> sharedPreferences.edit().putString(getString(R.string.mulKey),"$correctCount/10").apply()
+                4-> sharedPreferences.edit().putString(getString(R.string.divKey),"$correctCount/10").apply()
+                5-> sharedPreferences.edit().putString(getString(R.string.finalKey),"$correctCount/10").apply()
             }
             val intent = Intent(this, ScoreActivity::class.java)
-            intent.putExtra("correct", correctCount)
+            intent.putExtra(getString(R.string.testIntentKey), correctCount)
             startActivity(intent)
         } else {
             newQuestion(classNumber!!)
