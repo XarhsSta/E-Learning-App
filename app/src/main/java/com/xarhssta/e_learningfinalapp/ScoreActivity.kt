@@ -1,5 +1,6 @@
 package com.xarhssta.e_learningfinalapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -30,4 +31,10 @@ class ScoreActivity : AppCompatActivity() {
             }
             resultTextView.visibility = View.VISIBLE
         }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
+}

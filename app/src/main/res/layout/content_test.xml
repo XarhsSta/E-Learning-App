@@ -13,6 +13,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/placeholder"
         android:textSize="20sp"
+        android:backgroundTint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +26,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/placeholder"
         android:textSize="30sp"
+        android:backgroundTint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +41,7 @@
         android:tag="0"
         android:text="@string/placeholder"
         android:textSize="30sp"
+        android:backgroundTint="@color/accent"
         app:layout_constraintEnd_toStartOf="@+id/option2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actionTextView" />
@@ -53,6 +56,7 @@
         android:tag="1"
         android:text="@string/placeholder"
         android:textSize="30sp"
+        android:backgroundTint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/actionTextView"
         app:layout_constraintTop_toBottomOf="@+id/actionTextView" />
@@ -66,6 +70,7 @@
         android:tag="2"
         android:text="@string/placeholder"
         android:textSize="30sp"
+        android:backgroundTint="@color/accent"
         app:layout_constraintEnd_toStartOf="@+id/option4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +86,7 @@
         android:tag="3"
         android:text="@string/placeholder"
         android:textSize="30sp"
+        android:backgroundTint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/actionTextView"
         app:layout_constraintTop_toBottomOf="@+id/option2" />

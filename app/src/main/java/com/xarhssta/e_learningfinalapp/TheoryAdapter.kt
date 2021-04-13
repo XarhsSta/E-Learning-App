@@ -2,7 +2,6 @@ package com.xarhssta.e_learningfinalapp
 
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,21 +9,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.json.JSONObject
-import java.io.IOException
-import java.io.InputStream
 
-class TheoryAdapter(private val context: Context, private val classNumber: Int, private val itemList: List<Theory>):
+
+class TheoryAdapter(private val context: Context, private val itemList: List<Theory>):
     RecyclerView.Adapter<TheoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TheoryViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.class_card, parent, false)
-        Log.d("TheoryAdapter",".onCreateViewHolder called")
         return TheoryViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: TheoryViewHolder, position: Int) {
-        Log.d("TheoryAdapter",".onBindViewHolder called")
         val data = itemList[position]
         holder.classTitle.text = data.title
         val imageString = data.image
@@ -41,8 +36,6 @@ class TheoryAdapter(private val context: Context, private val classNumber: Int, 
         return if(itemList.isNotEmpty()) itemList.size else 1
     }
 
-
-
 }
 
 class TheoryViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -53,7 +46,7 @@ class TheoryViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
 }
 
-data class Theory(var title: String, var image:String, var description:String){
+data class Theory(var title: String, var image:String?, var description:String?, var videoID: String?){
     override fun toString(): String {
        return "Title: $title, ImageName: $image, Description: $description"
     }

@@ -3,6 +3,7 @@
     <string name="title_activity_test">Τεστ</string>
     <string name="title_activity_score">Τελικό Αποτέλεσμα</string>
     <string name="title_activity_theory">Θεωρία</string>
+    <string name="youtube">Βίντεο</string>
 
     <string name="placeholder">View</string>
     <string name="error">Invalid</string>
@@ -37,7 +38,7 @@
     <!-- Strings used in history_layout.xml-->
     <string name="historyTitleText">Ιστορικό Τελευταίων Αποτελεσμάτων</string>
 
-    <!--String usec in TestActivity.kt-->
+    <!--String used in TestActivity.kt-->
     <string name="addTestTitle">Βρες το σωστό άθροισμα</string>
     <string name="difTestTitle">Βρες τη σωστή διαφορά</string>
     <string name="mulTestTitle">Βρες το σωστό γινόμενο</string>
@@ -49,5 +50,10 @@
     <string name="mediumResult">Έκανες καλή προσπάθεια. Διάβασε άλλη μια φορά τη θεωρία και πιστεύω θα τα καταφέρεις</string>
     <string name="goodResult">Μπράβο σου. Πολύ καλή προσπάθεια</string>
 
+    <string name="tag">tag</string>
+    <string name="API_Key">AIzaSyD1MJpEsiKx5Pxaef6DX9Pc-7zT3GLDvfw</string>
+
+    <string name="YoutubeLink">http://www.youtube.com/watch?v=</string>
+    <string name="ThumbnailLink">http://img.youtube.com/vi/</string>
 
 </resources>
