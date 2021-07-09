@@ -51,7 +51,7 @@
     <string name="goodResult">Μπράβο σου. Πολύ καλή προσπάθεια</string>
 
     <string name="tag">tag</string>
-    <string name="API_Key">AIzaSyD1MJpEsiKx5Pxaef6DX9Pc-7zT3GLDvfw</string>
+    <string name="API_Key"></string>
 
     <string name="YoutubeLink">http://www.youtube.com/watch?v=</string>
     <string name="ThumbnailLink">http://img.youtube.com/vi/</string>
